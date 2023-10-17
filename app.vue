@@ -7,7 +7,6 @@
 import { useToast } from "vue-toastification";
 
 function updatePost(post) {
-  console.log("updatePOST", post, post.id);
   let posts = JSON.parse(localStorage.getItem("posts"));
   const index = posts.findIndex((n) => n.id === post.id);
   posts[index] = post;

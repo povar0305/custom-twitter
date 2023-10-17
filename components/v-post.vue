@@ -2,6 +2,8 @@
   <NuxtLink :to.prevent="'/posts/' + post.id">
     <v-card class="pa-1 ma-1">
       <v-card-item>
+        <v-card-subtitle>{{ post.date.split(",")[0] }}</v-card-subtitle>
+
         <v-card-title class="row d-flex justify-space-between pa-2">
           {{ post.title }}
           <v-btn
@@ -11,8 +13,6 @@
             variant="plain"
           />
         </v-card-title>
-
-        <v-card-subtitle>{{ post.date.split(",")[0] }}</v-card-subtitle>
       </v-card-item>
       <v-card-text>{{ post.text }}</v-card-text>
       <v-card-actions>
