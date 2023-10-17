@@ -26,7 +26,12 @@
     {{ text }}
     {{ title }}{{ fillText }}{{ posts.lenght }}
     <v-col>
-      <v-post v-for="post of posts" :key="post.id" :post="post" />
+      <v-post
+        v-for="post of posts"
+        :key="post.id"
+        :post="post"
+        @deletePost="deletePost"
+      />
     </v-col>
   </v-app>
 </template>
@@ -57,6 +62,10 @@ function chechForm() {
   fillText.value = "";
 }
 
+function deletePost(deletedPost) {
+  console.log("function deletePost(deletedPost)", deletedPost);
+  posts.value.splice(deletedPost.id, 1);
+}
 function getPosts() {
   console.log("getPosts");
   posts = computed(() => {
