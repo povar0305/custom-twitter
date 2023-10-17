@@ -1,9 +1,20 @@
 <template>
   <NuxtLayout>
-    <NuxtPage> </NuxtPage>
+    <NuxtPage @updatePost="updatePost"> </NuxtPage>
   </NuxtLayout>
 </template>
-<script setup></script>
+<script setup>
+import { useToast } from "vue-toastification";
+
+function updatePost(post) {
+  console.log("updatePOST", post, post.id);
+  let posts = JSON.parse(localStorage.getItem("posts"));
+  const index = posts.findIndex((n) => n.id === post.id);
+  posts[index] = post;
+  localStorage.setItem("posts", JSON.stringify(posts));
+  useToast().success("Запись обновлена");
+}
+</script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;400;700&display=swap");
 

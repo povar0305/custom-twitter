@@ -1,6 +1,5 @@
 <template>
-  <div>sdfghj</div>
-  {{ showEdit }}{{ post }}
+  {{ post }}
   <v-card class="pa-1 ma-1">
     <v-card-item>
       <v-card-title class="row d-flex justify-space-between pa-2">
@@ -29,7 +28,7 @@
         /><v-btn
           size="small"
           v-show="showEdit"
-          @click="updatePost(post)"
+          @click="$emit('updatePost', post), (showEdit = false)"
           icon="mdi-check"
           variant="plain"
         />
@@ -53,7 +52,7 @@ console.log(route.params);
 let post = ref();
 
 let showEdit = ref(false);
-
+defineEmits(["updatePost"]);
 if (localStorage.getItem("posts")) {
   let posts = JSON.parse(localStorage.getItem("posts"));
   post.value = posts.find((e) => {
@@ -62,6 +61,8 @@ if (localStorage.getItem("posts")) {
     }
   });
 }
+
+function updatePost(post) {}
 </script>
 
 <style lang="scss" scoped></style>
