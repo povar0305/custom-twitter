@@ -24,9 +24,9 @@
       <v-btn type="submit" block class="mt-2" text="Записать"></v-btn>
     </v-form>
     {{ text }}
-    {{ title }}{{ fillText }}
+    {{ title }}{{ fillText }}{{ posts.lenght }}
     <v-col>
-      <v-post v-for="(post, i) of posts" :key="i" :post="post" />
+      <v-post v-for="post of posts" :key="post.id" :post="post" />
     </v-col>
   </v-app>
 </template>
@@ -43,6 +43,7 @@ let text = ref();
 let fillText = ref();
 function chechForm() {
   let post = {
+    id: Object.keys(posts.value).length,
     text: text.value,
     title: title.value,
     date: new Date(Date.now()).toLocaleString(),
