@@ -1,19 +1,35 @@
 <template>
   <v-app id="app">
     <h2>Личный дневник</h2>
-    <v-form validate-on="submit lazy" @submit.prevent="chechForm">
+    <v-form
+      ref="form"
+      lazy-validation
+      validate-on="input"
+      @submit.prevent="checkForm()"
+    >
       <v-text-field
-        focused
         v-model="title"
         variant="outlined"
         density="compact"
         label="Заголовок"
+        :rules="[
+          (v) => !!v || 'Заполните заголовок',
+          (v) => (v && v.length <= 50) || 'Максимальная длина заголовка 50',
+        ]"
+        :counter="50"
+        required
       ></v-text-field>
       <v-textarea
         label="Краткое описание"
         v-model.trim="text"
         density="compact"
         variant="outlined"
+        :rules="[
+          (v) => !!v || 'Заполните краткое описание',
+          (v) => (v && v.length <= 100) || 'Максимальная длина описания 100',
+        ]"
+        :counter="100"
+        required
       ></v-textarea>
       <v-textarea
         label="Полное описание"
@@ -23,8 +39,6 @@
       ></v-textarea>
       <v-btn type="submit" block class="mt-2" text="Записать"></v-btn>
     </v-form>
-    {{ text }}
-    {{ title }}{{ fillText }}{{ posts.lenght }}
     <v-col>
       <v-post
         v-for="post of posts"
@@ -38,34 +52,48 @@
 
 <script setup>
 import VPost from "./components/v-post.vue";
+import { useToast } from "vue-toastification";
 
-import { ref, computed } from "vue";
+import { ref, onMounted } from "vue";
 
 let posts = ref([]);
 
 let title = ref();
 let text = ref();
 let fillText = ref();
-function chechForm() {
-  let post = {
-    id: Object.keys(posts.value).length,
-    text: text.value,
-    title: title.value,
-    date: new Date(Date.now()).toLocaleString(),
-    fillText: fillText.value,
-    сomments: [],
-  };
-  posts.value.push(post);
-  localStorage.setItem("posts", JSON.stringify(posts.value));
-  text.value = "";
-  title.value = "";
-  fillText.value = "";
+
+let form = ref();
+
+function checkForm() {
+  form.value?.validate().then(({ valid: isValid }) => {
+    if (isValid) {
+      let post = {
+        id: Object.keys(posts.value).length,
+        text: text.value,
+        title: title.value,
+        date: new Date(Date.now()).toLocaleString(),
+        fillText: fillText.value,
+        сomments: [],
+      };
+      posts.value.push(post);
+      localStorage.setItem("posts", JSON.stringify(posts.value));
+      useToast().success("Запись добавлена", {
+        position: "bottom-left",
+        hideProgressBar: true,
+        timeout: false,
+      });
+      text.value = "";
+      title.value = "";
+      fillText.value = "";
+      form.value?.resetValidation();
+    }
+  });
 }
 
 function deletePost(deletedPost) {
-  console.log("function deletePost(deletedPost)", deletedPost);
   posts.value.splice(deletedPost.id, 1);
 }
+
 function getPosts() {
   console.log("getPosts");
   posts = computed(() => {
