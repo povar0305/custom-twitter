@@ -15,9 +15,16 @@
       <v-card-subtitle>{{ post.date.split(",")[0] }}</v-card-subtitle>
     </v-card-item>
     <v-card-text>{{ post.text }}{{ post }}</v-card-text>
-    <v-badge v-if="post.сomments.length > 0" :content="post.сomments.length">
-      <v-icon icon="mdi-comment-outline" />
-    </v-badge>
+    <v-card-actions>
+      <v-row justify="end" class="ma-0">
+        <v-badge
+          v-if="post.сomments.length > 0"
+          :content="post.сomments.length"
+        >
+          <v-icon icon="mdi-comment-outline" />
+        </v-badge>
+      </v-row>
+    </v-card-actions>
   </v-card>
 </template>
 

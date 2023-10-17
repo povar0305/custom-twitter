@@ -73,19 +73,18 @@ function checkForm() {
         title: title.value,
         date: new Date(Date.now()).toLocaleString(),
         fillText: fillText.value,
-        сomments: [],
+        сomments: ["sdfghujkl", "sdfghjkl"],
       };
       posts.value.push(post);
       localStorage.setItem("posts", JSON.stringify(posts.value));
-      useToast().success("Запись добавлена", {
-        position: "bottom-left",
-        hideProgressBar: true,
-        timeout: false,
-      });
+
       text.value = "";
       title.value = "";
       fillText.value = "";
       form.value?.resetValidation();
+      useToast().success("Запись добавлена");
+    } else {
+      useToast().error("Заполните корректно форму");
     }
   });
 }
@@ -108,10 +107,5 @@ function getPosts() {
 #app {
   font-family: "Raleway", sans-serif;
   padding: 2rem;
-}
-
-.form {
-  max-width: 450px;
-  width: 100%;
 }
 </style>
