@@ -1,39 +1,48 @@
 <template>
-  <v-card class="pa-2 ma-2">
-    <v-card-item>
-      <v-row justify="space-between" class="ma-0">
-        <v-card-title>{{ post.title }}</v-card-title>
-        <v-btn
-          size="x-small"
-          @click="$emit('deletePost', post)"
-          icon="mdi-close"
-          variant="plain"
-        >
-        </v-btn>
-      </v-row>
+  <NuxtLink :to.prevent="'/posts/' + post.id">
+    <v-card class="pa-1 ma-1">
+      <v-card-item>
+        <v-card-title class="row d-flex justify-space-between pa-2">
+          {{ post.title }}
+          <v-btn
+            size="small"
+            @click.prevent="$emit('deletePost', post)"
+            icon="mdi-close"
+            variant="plain"
+          />
+        </v-card-title>
 
-      <v-card-subtitle>{{ post.date.split(",")[0] }}</v-card-subtitle>
-    </v-card-item>
-    <v-card-text>{{ post.text }}{{ post }}</v-card-text>
-    <v-card-actions>
-      <v-row justify="end" class="ma-0">
+        <v-card-subtitle>{{ post.date.split(",")[0] }}</v-card-subtitle>
+      </v-card-item>
+      <v-card-text>{{ post.text }}</v-card-text>
+      <v-card-actions>
         <v-badge
           v-if="post.сomments.length > 0"
           :content="post.сomments.length"
         >
           <v-icon icon="mdi-comment-outline" />
         </v-badge>
-      </v-row>
-    </v-card-actions>
-  </v-card>
+      </v-card-actions>
+    </v-card>
+  </NuxtLink>
 </template>
 
 <script setup>
 defineProps(["post"]);
-defineEmits(["deletePost"]);
+defineEmits(["deletePost", "updatePost"]);
+
+function updatePost(updatedPost) {
+  console.log("updatePost", updatedPost);
+}
 </script>
 <style>
 .card {
   height: auto;
+}
+.v-card:hover {
+  background: #ededff !important;
+}
+a {
+  text-decoration: none;
 }
 </style>
