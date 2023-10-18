@@ -20,7 +20,6 @@
             (v) => (v && v.length <= 50) || 'Максимальная длина заголовка 50',
           ]"
           :counter="50"
-          required
         ></v-text-field>
         <v-textarea
           label="Краткое описание"
@@ -32,13 +31,16 @@
             (v) => (v && v.length <= 100) || 'Максимальная длина описания 100',
           ]"
           :counter="100"
-          required
         ></v-textarea>
         <v-textarea
           label="Полное описание"
           v-model.trim="fillText"
           density="compact"
           variant="outlined"
+          :rules="[
+            (v) => v.length < 255 || 'Максимальная длина полного описание 255',
+          ]"
+          :counter="255"
         ></v-textarea>
         <v-btn type="submit" block class="mt-2" text="Записать"></v-btn>
       </v-form>
@@ -77,7 +79,7 @@ function checkForm() {
         title: title.value,
         date: new Date(Date.now()).toLocaleString(),
         fillText: fillText.value,
-        сomments: ["sdfghujkl", "sdfghjkl"],
+        сomments: [],
       };
       posts.value.push(post);
       localStorage.setItem("posts", JSON.stringify(posts.value));

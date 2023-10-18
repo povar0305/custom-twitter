@@ -31,11 +31,8 @@
 defineProps(["post"]);
 defineEmits(["deletePost", "updatePost"]);
 
-function updatePost(updatedPost) {
-  console.log("updatePost", updatedPost);
-}
 </script>
-<style>
+<style scoped>
 .card {
   height: auto;
 }
