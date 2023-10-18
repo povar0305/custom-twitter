@@ -4,7 +4,7 @@
       <v-card-item>
         <v-card-subtitle
           class="row d-flex justify-space-between pa-2 align-center"
-          >{{ post.date.split(",")[0]
+          >{{ post.date.replace(/[/]/g, ".")
           }}<v-btn
             size="small"
             @click.prevent="$emit('deletePost', post)"

@@ -2,8 +2,6 @@
   <div>
     <v-app id="app">
       <h2>Личный дневник</h2>
-      <!-- TODO поправить верстку крестика -->
-      {{ posts.value }}
       <v-form
         ref="form"
         lazy-validation
@@ -77,7 +75,10 @@ function checkForm() {
         id: posts.value.length + 1,
         text: text.value,
         title: title.value,
-        date: new Date(Date.now()).toLocaleString(),
+        date: new Date(Date.now())
+          .toLocaleString()
+          .split(",")[0]
+          .replace(/\./g, "/"),
         fillText: fillText.value,
         сomments: [],
       };
