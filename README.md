@@ -17,28 +17,31 @@
 
 При добавлении поста появляется уведомление. Для уведомлений использовала [библиотеку](https://github.com/Maronato/vue-toastification)
 
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/a70a4d3b-0dfb-4588-bd7e-cdd16f8fd7e2)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/9acbbc42-47e3-41fa-8a66-9d5a07c5b64e)
 
 
 Отображение постов с комментариями 
 
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/d60e6664-52e3-4b2c-9016-eb01ef9c4a52)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/23b14ce8-23e9-4bdd-b5c7-c4b96e8dec62)
 
 
 Удаление постов 
 
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/2b16de9f-00c7-492c-935b-f16392a0acf4)
-
-Редактирование поста 
-
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/1f6f1751-528e-49c9-8582-b39fc0bc6155)
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/4f0f1e52-5ab6-4937-8f74-3644c387a8cc)
-
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/be243054-53c6-40d2-8c55-6f158a50475a)
 
 
 Страница отдельного поста 
 
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/89c9c493-a498-460f-ba0e-e709e8931e12)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/7c4528a8-4c54-4034-a5ca-027e8a86130d)
+
+
+Редактирование поста 
+
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/f3fadeee-cb51-4558-a6d5-81893ddb1c5d)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/db551e9b-039c-4047-b499-fb80d3acf2f2)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/44eeeeeb-3adb-4c85-8799-fbc616d772fb)
+
+
 
 
 Добавление комментариев 
