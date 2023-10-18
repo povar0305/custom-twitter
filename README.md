@@ -42,17 +42,16 @@
 ![image](https://github.com/povar0305/custom-twitter/assets/73982948/44eeeeeb-3adb-4c85-8799-fbc616d772fb)
 
 
-
-
 Добавление комментариев 
 
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/140c4f85-8eaa-4d40-a028-a937f31da8c8)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/51811886-c747-40f7-a0cd-f4627e6943fa)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/5f6ddeec-1982-4632-ab8a-ab1135c8b2bc)
 
 
 Удаление комментариев
 
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/6cf0974f-e755-4a72-afef-fc0f927ec620)
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/9f8cdb1d-3eaa-4d54-9d92-fb4a85494c3c)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/17bae51b-8e30-465d-b94d-802bf0fc7c36)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/c13ebaf2-1f38-4eda-9a2d-60592d71a984)
 
 
 
@@ -64,16 +63,16 @@
 * заголовок (обязательное поле, максимальная длина 50 символов)
 * краткое описание (обязательное поле, максимальная длина 100 символов)
 * полное описание (максимальная длина 255 символов)
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/a679b481-7742-4c54-8c92-6c4117272ffb)
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/2ecef39b-357f-4e85-a7bd-12a6ebaea700)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/b756290d-c537-4824-85c2-581a462bed4b)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/e445753d-9dc1-46dc-bf49-65471e144b30)
 
 
 ### Комментарий
 * имя комментатора (обязательное поле, максимальная длина 50 символов)
 * email комментатора (проверка на валидность email, максимальная длина 50 символов)
 * текст комментария (обязательное поле, максимальная длина 255 символов
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/6d6c11a9-3baf-4952-8bbe-ff9db4651d01)
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/8adb2a8d-5f0f-48e7-91d1-f0c56eddd04c)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/812e8110-fb09-4c5e-8ccd-26b06673e8c3)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/9026cfaa-c99c-45e2-98f1-8ff4b1d1abde)
 
 
 ### Особенности 
