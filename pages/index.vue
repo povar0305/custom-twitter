@@ -2,7 +2,7 @@
   <div>
     <v-app id="app">
       <h2>Личный дневник</h2>
-
+      <!-- TODO поправить верстку крестика -->
       {{ posts.value }}
       <v-form
         ref="form"
@@ -96,7 +96,6 @@ function checkForm() {
 }
 
 function deletePost(deletedPost) {
-  console.log("deletedPost", deletedPost);
   const index = posts.value.findIndex((n) => n.id === deletedPost.id);
   if (index !== -1) {
     posts.value.splice(index, 1);
@@ -106,17 +105,9 @@ function deletePost(deletedPost) {
 
 onMounted(() => {
   if (localStorage.getItem("posts")) {
-    console.log(JSON.parse(localStorage.getItem("posts")));
     posts.value = JSON.parse(localStorage.getItem("posts"));
   }
 });
-
-// if (localStorage) {
-//   if (localStorage.getItem("posts")) {
-//     console.log(JSON.parse(localStorage.getItem("posts")));
-//     posts.value = JSON.parse(localStorage.getItem("posts"));
-//   }
-// }
 </script>
 
 <style>

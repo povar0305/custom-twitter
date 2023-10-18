@@ -1,6 +1,5 @@
 <template>
   <div class="pa-3">
-    {{ post["сomments"] }}
     <v-card class="pa-1 ma-1">
       <v-card-item>
         <v-card-subtitle class="d-flex justify-space-between align-center"
@@ -63,10 +62,7 @@
         </v-card-text>
       </v-card-item>
     </v-card>
-
     <h3 class="py-3">Комментарии</h3>
-
-    {{ post.comments }}
     <v-col class="ma-0">
       <v-btn
         size="small"
@@ -74,21 +70,17 @@
         @click="addComments"
         prepend-icon="mdi-comment-outline"
       >
-        Добавить комментарий {{ showFormAddComments }}
+        Добавить комментарий
       </v-btn>
       <v-row v-show="showFormAddComments" class="ma-0 py-3">
-        {{ name }}
-        {{ email }}
-        {{ comment }}
         <v-form
           class="formAddComments"
           ref="formAddComments"
-          lazy-validation
           validate-on="input"
           @submit.prevent="checkFormAddComments(), $emit('updatePost', post)"
         >
           <v-text-field
-            v-model="name"
+            v-model.trim="name"
             variant="outlined"
             density="compact"
             label="Имя"
@@ -99,7 +91,7 @@
             :counter="50"
           ></v-text-field
           ><v-text-field
-            v-model="email"
+            v-model.trim="email"
             variant="outlined"
             density="compact"
             label="Почта"
@@ -112,7 +104,7 @@
             :counter="50"
           ></v-text-field>
           <v-text-field
-            v-model="comment"
+            v-model.trim="comment"
             variant="outlined"
             density="compact"
             label="Комментарий"
@@ -121,19 +113,29 @@
               (v) =>
                 (v && v.length <= 255) || 'Максимальная длина комментария 255',
             ]"
-            :counter="50"
+            :counter="255"
           ></v-text-field>
           <v-btn size="small" icon="mdi-check" variant="plain" type="submit" />
         </v-form>
       </v-row>
     </v-col>
-    <v-card class="my-2">
+    <v-card
+      class="my-2"
+      v-for="commentPost in post.сomments"
+      :key="commentPost.id"
+    >
       <v-card-item>
         <v-card-subtitle class="row d-flex justify-space-between">
-          <p>имя (почта)</p>
-          <v-btn size="small" icon="mdi-close" variant="plain"
+          <p>
+            {{ commentPost.name }} <span> ({{ commentPost.email }}) </span>
+          </p>
+          <v-btn
+            size="small"
+            icon="mdi-close"
+            @click="deleteComments(commentPost), $emit('updatePost', post)"
+            variant="plain"
         /></v-card-subtitle>
-        <v-card-text>текст</v-card-text>
+        <v-card-text>{{ commentPost.comment }}</v-card-text>
       </v-card-item>
     </v-card>
   </div>
@@ -153,30 +155,41 @@ let formAddComments = ref();
 let showFormAddComments = ref(false);
 
 defineEmits(["updatePost"]);
-
 if (localStorage.getItem("posts")) {
   let posts = JSON.parse(localStorage.getItem("posts"));
-  //TODO изменить дату
-
   post.value = posts.find((e) => {
     if (e.id == route.params.id) {
       return e;
     }
   });
 }
-
 function addComments() {
   showFormAddComments.value = true;
 }
 
 function checkFormAddComments() {
-  console.log("checkFormAddComments", name.value, email.value, comment.value);
-  console.log(post.value["сomments"], typeof post.value["сomments"]);
-  post.value["сomments"].push({
-    name: name.value,
-    email: email.value,
-    comment: comment.value,
+  formAddComments.value?.validate().then(({ valid: isValid }) => {
+    post.value["сomments"].push({
+      id: post.value["сomments"].length + 1,
+      name: name.value,
+      email: email.value,
+      comment: comment.value,
+    });
+    name.value = "";
+    email.value = "";
+    comment.value = "";
+    formAddComments.value?.resetValidation();
+    showFormAddComments.value = false;
   });
+}
+
+function deleteComments(deletedComment) {
+  const index = post.value.сomments.findIndex(
+    (n) => n.id === deletedComment.id
+  );
+  if (index !== -1) {
+    post.value.сomments.splice(index, 1);
+  }
 }
 </script>
 

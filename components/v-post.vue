@@ -2,16 +2,18 @@
   <NuxtLink :to.prevent="'/posts/' + post.id">
     <v-card class="pa-1 ma-1">
       <v-card-item>
-        <v-card-subtitle>{{ post.date.split(",")[0] }}</v-card-subtitle>
-
-        <v-card-title class="row d-flex justify-space-between pa-2">
-          {{ post.title }}
-          <v-btn
+        <v-card-subtitle
+          class="row d-flex justify-space-between pa-2 align-center"
+          >{{ post.date.split(",")[0]
+          }}<v-btn
             size="small"
             @click.prevent="$emit('deletePost', post)"
             icon="mdi-close"
             variant="plain"
-          />
+        /></v-card-subtitle>
+
+        <v-card-title>
+          {{ post.title }}
         </v-card-title>
       </v-card-item>
       <v-card-text>{{ post.text }}</v-card-text>
@@ -30,7 +32,6 @@
 <script setup>
 defineProps(["post"]);
 defineEmits(["deletePost", "updatePost"]);
-
 </script>
 <style scoped>
 .card {
