@@ -3,7 +3,7 @@
     <v-card class="pa-1 ma-1">
       <v-card-item>
         <v-card-subtitle class="d-flex justify-space-between align-center"
-          >{{ post.date.split(",")[0] }}
+          >{{ post.date.replace(/[/]/g, ".") }}
           <v-btn
             size="small"
             v-show="!showEdit"

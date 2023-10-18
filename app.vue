@@ -9,7 +9,10 @@ import { useToast } from "vue-toastification";
 function updatePost(post) {
   let posts = JSON.parse(localStorage.getItem("posts"));
   const index = posts.findIndex((n) => n.id === post.id);
-  post.date = new Date(Date.now()).toLocaleString();
+  post.date = new Date(Date.now())
+    .toLocaleString()
+    .split(",")[0]
+    .replace(/\./g, "/");
   posts[index] = post;
   localStorage.setItem("posts", JSON.stringify(posts));
   useToast().success("Запись обновлена");
