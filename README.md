@@ -12,7 +12,7 @@
 
 Основная страница с постами 
 
-![image](https://github.com/povar0305/custom-twitter/assets/73982948/682a9060-7cbf-4dc6-8f7f-97c60e44403e)
+![image](https://github.com/povar0305/custom-twitter/assets/73982948/cf4ef4f7-8845-4877-bdf5-8aaf879a0525)
 
 
 При добавлении поста появляется уведомление. Для уведомлений использовала [библиотеку](https://github.com/Maronato/vue-toastification)
